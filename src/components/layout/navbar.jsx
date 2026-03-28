@@ -1,4 +1,4 @@
-import { FolderRoot, FileUser, Info, MoveUpRight } from "lucide-react";
+import {FolderRoot, FileUser, Info, MoveUpRight} from "lucide-react";
 const Navbar = () => {
     return (
         <div>
@@ -19,4 +19,3 @@ const Navbar = () => {
     )
 }
 export default Navbar;
-
