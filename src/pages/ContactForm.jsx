@@ -8,9 +8,9 @@ const ContactForm = (e) => {
 
 
     return (
-        <div className="flex justify-center bg-linear-to-b from-[#2F6B5F] via-[#1F4F46] to-[#050607] text-white gap-16 m-4">
+        <div className="flex justify-center  text-white gap-16 m-4">
             <div className="">
-                <div className="flex border rounded-2xl items-center px-5  bg-linear-to-r from-slate-700 to-stone-900 gap-3 text-white">
+                <div className="flex border rounded-2xl items-center px-5 gap-3 text-white">
                     <div className="rounded-full items-center justify-center flex border-2 ">
                         <CircleUser size={8} />
                     </div>

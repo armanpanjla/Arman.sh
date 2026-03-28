@@ -8,18 +8,16 @@ import TechStack from './pages/TechStack.jsx';
 const app = () => {
 
 
-  return (
-    <div>
-      <Navbar />
-      <aside><Sidebar /></aside>
-
-      <HeroSection />
-      <TechStack />
-      <ProjectSection />
-
-      <ContactForm />
-    </div>
-  )
+    return (
+        <div className='bg-grid text-white'>
+            <Navbar/>
+            <aside><Sidebar/></aside>
+            <HeroSection/>
+            <TechStack/>
+            <ProjectSection/>
+            <ContactForm/>
+        </div>
+    )
 }
 
 
