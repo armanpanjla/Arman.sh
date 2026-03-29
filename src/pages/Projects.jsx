@@ -3,7 +3,9 @@ const ProjectSection = () =>{
 
     return(
         <div className="flex justify-center">
-            project
+            <section>
+                grid
+            </section>
         </div>
     )
 }

@@ -4,13 +4,13 @@ const HeroSection = () => {
   return (
     <section className="flex flex-col items-center justify-center text-center min-h-[80vh] px-6">
 
-      {/* Location */}
+    
       <p className="text-xs tracking-widest text-gray-400 mb-4">
         BASED IN AMRITSAR, VERKA
       </p>
 
-      {/* Heading */}
-      <h1 className="text-4xl md:text-6xl font-bold leading-tight max-w-3xl">
+     
+      <h1 className="text-4xl md:text-4xl font-bold leading-tight max-w-3xl">
         Where{" "}
         <span className="text-blue-500">quality time</span>{" "}
         and{" "}
@@ -19,14 +19,14 @@ const HeroSection = () => {
         come together.
       </h1>
 
-      {/* Subtext */}
+     
       <p className="text-gray-400 mt-4 max-w-xl">
         Hi, I'm Arman. I create intuitive, visually stunning and highly functional web applications.
       </p>
 
-      {/* Buttons */}
+    
       <div className="flex gap-4 mt-6">
-        <button className="px-5 py-2 border border-gray-600 rounded-lg hover:bg-white hover:text-black transition">
+        <button className="px-5 py-2 border border-gray-600 bg-slate-900 rounded-lg hover:bg-white hover:text-black transition">
           See my work
         </button>
 

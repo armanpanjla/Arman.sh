@@ -1,5 +1,5 @@
-import Navbar from './components/navbar.jsx'
-import Sidebar from './components/sidebar.jsx';
+import Navbar from './components/layout/navbar.jsx'
+import Sidebar from './components/layout/sidebar.jsx';
 import ContactForm from './pages/ContactForm.jsx';
 import HeroSection from './pages/HeroSection.jsx';
 import ProjectSection from './pages/Projects.jsx';
@@ -11,7 +11,7 @@ const app = () => {
     return (
         <div className='bg-grid text-white'>
             <Navbar/>
-            <aside><Sidebar/></aside>
+            <Sidebar/>
             <HeroSection/>
             <TechStack/>
             <ProjectSection/>
