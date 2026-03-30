@@ -9,7 +9,7 @@ const app = () => {
 
 
     return (
-        <div className='bg-grid text-white'>
+        <div className='bg-grid text-white '>
             <Navbar/>
             <Sidebar/>
             <HeroSection/>

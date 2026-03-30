@@ -1,13 +1,27 @@
-const SkillStash = ({ Skills = [] , title = "MySkills" }) => {
+const SkillStash = ({ Skills }) => {
     return (
         <section>
-            <h2>{title}</h2>
-            <div className=" flex flex-wrap gap-3 ">
-                {Skills.map((Skill)=>(
-                    <div key={Skill} className="border bg-[#1d1d1d] rounded items-center text-center gap-3 p-2 ">{Skill}</div>
+            <div className="grid grid-cols-4 gap-8">
+                {Skills.map((skill, index) => (
+                    <div
+                        key={index}
+                        className="flex items-center gap-3 bg-[#1d1d1d] p-3 rounded-lg hover:scale-105 transition"
+                    >
+                        <img
+                            className="w-8 h-8 rounded"
+                            src={skill.logo}
+                            alt={skill.name}
+                        />
+
+                        <div className="text-xs text-gray-300">
+                            <p className="font-medium">{skill.name}</p>
+                            <p className="text-gray-400">{skill.subhead}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
         </section>
-    )
-}
+    );
+};
+
 export default SkillStash;
