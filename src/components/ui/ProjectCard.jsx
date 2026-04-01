@@ -1,44 +1,47 @@
-import Techused  from "./Techused"
-const ProjectCard = ({Projects}) => {
-    return (
-        <div> {
-            Projects.map((project, index) => (
-                <div key={index}
-                    className="">
-                    <div className="flex ">
-                        <div className="border p-4">
-                            <div>
-                                <p className="text-3xl tracking-wider">
-                                    {
-                                    project.name
-                                }</p>
-                            </div>
-                            <img className=" border  rounded-2xl  mb-4  border-none p-6"
-                                src={
-                                    project.img
-                                }
-                                alt={
-                                    project.name
-                                }
-                                draggable="false"/>
+import Techused from "./Techused";
 
-                            <div>
-                                <p className="p-4">
-                                    {
-                                    project.subhead
-                                }</p>
-                            </div>
+const ProjectCard = ({ Projects }) => {
+    return (
+        <div className="flex flex-col gap-24 my-20 bg-black max-w-6xl mx-auto px-4">
+            {Projects.map((project) => (
+                <div
+                    key={project.name}
+                    className="flex flex-col lg:flex-row gap-10 lg:gap-14 group items-start"
+                >
+                    <div className="flex-1">
+                        <div className="flex items-center gap-3 font-mono text-sm text-slate-500 mb-3 tracking-wide">
+                            <p>{project.creationmonth}</p>
+                            <span className="text-slate-700">*</span>
+                            <p>{project.completion}</p>
                         </div>
 
+                        <h2 className="text-4xl lg:text-5xl font-mono font-bold tracking-wider text-white mb-5 leading-tight">
+                            {project.name}
+                        </h2>
 
-                        <div className="p-8">
-                            {
-                            <Techused techlist={project.techlist} />
-                        } </div>
+                        <img
+                            className="w-full max-h-95 rounded-2xl border border-slate-800 object-cover shadow-lg mb-6 transition-all duration-500 group-hover:scale-[1.02] group-hover:border-slate-600"
+                            src={project.img}
+                            alt={project.name}
+                            draggable="false"
+                        />
+
+                        <p className="font-sans text-slate-300 text-lg leading-relaxed max-w-2xl">
+                            {project.subhead}
+                        </p>
+                    </div>
+
+                    <div className="bg-[#0a0a0a] min-w-50 border border-slate-800 rounded-2xl p-6 h-fit mt-2">
+                        <h3 className="font-mono text-xs tracking-[0.2em] text-slate-500 uppercase font-bold mb-4">
+                            Technologies
+                        </h3>
+
+                        <Techused techlist={project.techlist} />
                     </div>
                 </div>
-            ))
-        } </div>
-    )
-}
+            ))}
+        </div>
+    );
+};
+
 export default ProjectCard;

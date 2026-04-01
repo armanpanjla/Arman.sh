@@ -6,12 +6,12 @@ import {Projects} from "../../data/Projects";
 const ProjectSection = () => {
     return (
         <section>
-            <div className="flex h-fit items-center mb-">
-                <h1 className="flex mb-6 text-3xl">Recent Projects</h1>
-                <Link to="/projects" className=" border  p-2 rounded border-slate-600  ml-auto  bg-[#1d1d1d] hover:scale-105 ">View Projects</Link>
+            <div className="flex h-fit  text-center items-center p-14 mb-">
+                <h1 className="flex  text-3xl">Selected Projects</h1>
+                <Link to="/projects" className=" border  p-2 rounded border-slate-600  ml-auto   hover:scale-105 ">View Projects</Link>
             </div>
 
-            <div className=" grid grid-cols-1 mx-auto max-w-5/8  bg-[#1d1d1d] my-auto items-center">
+            <div className=" grid grid-cols-1 mx-auto max-w-5/8  items-center">
                 <ProjectCard Projects={Projects}/>
             </div>
 

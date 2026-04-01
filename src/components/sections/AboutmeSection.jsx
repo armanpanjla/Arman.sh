@@ -18,7 +18,7 @@ const Aboutme = () => {
                         <span className="text-red-500">Panjla</span>
                     </h1>
 
-                    <div className="mt-10 space-y-4">
+                    <div className="mt-10 font-mono space-y-4">
                         <div className="flex gap-4 items-center text-sm text-slate-400 font-medium tracking-wide">
                             <MapPin size={20}
                                 className="text-red-500"/>
@@ -37,11 +37,11 @@ const Aboutme = () => {
                     </div>
 
                     {/* Adjusted max-width for better readability on larger screens */}
-                    <p className="mt-8 max-w-xl text-lg leading-relaxed tracking-wide text-slate-300">
+                    <p className="mt-8 max-w-xl  leading-relaxed text-sm tracking-wider text-slate-300">
                         Hey, I'm Arman. I'm a full-stack developer, Linux enthusiast, and final-year CSE student. 
                                                 I specialize in{" "} 
                         <span className="text-white font-medium">React, Node.js, and MongoDB</span>, 
-                                                    building tools that are fast, intuitive, and architected to scale. From real-time WebRTC apps 
+                                                    building tools that are fast, intuitive, and architected to scale. From real time WebRTC apps 
                                                     to daily tracker platforms, I love taking ideas from a blank database schema all the way to deployment. 
                                                     I thrive in a terminal, live by clean documentation, and am always looking for the next technical challenge.
                     </p>
