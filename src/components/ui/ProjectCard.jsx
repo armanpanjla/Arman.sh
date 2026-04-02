@@ -2,7 +2,7 @@ import Techused from "./Techused";
 
 const ProjectCard = ({ Projects }) => {
     return (
-        <div className="flex flex-col gap-24 my-20 bg-black max-w-6xl mx-auto px-4">
+        <div className="flex flex-col gap-24 my-20  mx-auto px-4">
             {Projects.map((project) => (
                 <div
                     key={project.name}
@@ -26,13 +26,13 @@ const ProjectCard = ({ Projects }) => {
                             draggable="false"
                         />
 
-                        <p className="font-sans text-slate-300 text-lg leading-relaxed max-w-2xl">
+                        <p className="font-sans tracking-wider text-sm text-slate-300 leading-relaxed max-w-2xl">
                             {project.subhead}
                         </p>
                     </div>
 
-                    <div className="bg-[#0a0a0a] min-w-50 border border-slate-800 rounded-2xl p-6 h-fit mt-2">
-                        <h3 className="font-mono text-xs tracking-[0.2em] text-slate-500 uppercase font-bold mb-4">
+                    <div className=" min-w-50 border border-slate-800 my-auto rounded-2xl p-6">
+                        <h3 className="font-mono text-xs tracking-[0.2em] text-center text-slate-500 uppercase font-bold mb-4">
                             Technologies
                         </h3>
 

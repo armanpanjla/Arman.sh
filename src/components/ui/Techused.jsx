@@ -2,7 +2,7 @@ const Techused = ({techlist}) => {
     if (!techlist) 
         return null;
     return (
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="flex flex-col items-center gap-3 mt-4">
             {
             techlist.map((item, index) => (
                 <div key={index}
