@@ -6,7 +6,7 @@ const ProjectCard = ({ Projects }) => {
             {Projects.map((project) => (
                 <div
                     key={project.name}
-                    className="flex flex-col lg:flex-row gap-10 lg:gap-14 group items-start"
+                    className="flex flex-col lg:flex-row gap-10 lg:gap-14 border border-l-0 rounded-3xl p-8 border-slate-700  group items-start"
                 >
                     <div className="flex-1">
                         <div className="flex items-center gap-3 font-mono text-sm text-slate-500 mb-3 tracking-wide">

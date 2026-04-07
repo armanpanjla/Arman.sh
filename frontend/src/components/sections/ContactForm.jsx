@@ -43,9 +43,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row gap-16 my-20 mx-auto px-4 text-white max-w-6xl">
-
-            {/* LEFT SIDE */}
+        <section id="contact-form" className="flex flex-col lg:flex-row gap-16 my-20 mx-auto px-4 text-white max-w-6xl">
             <div className="flex-1">
                 <div className="flex items-center gap-3 font-mono text-sm text-slate-500 mb-4 tracking-wide">
                     <CircleUser size={16}/>
@@ -84,8 +82,6 @@ const ContactForm = () => {
 
                 </section>
             </div>
-
-            {/* RIGHT SIDE FORM */}
             <div className="flex-1">
                 <form onSubmit={handleSubmit}
                     className="flex flex-col gap-4 border border-slate-800 p-6 rounded-2xl my-7 bg-slate-900/30 backdrop-blur">
@@ -141,7 +137,7 @@ const ContactForm = () => {
                 } </form>
             </div>
 
-        </div>
+        </section>
     );
 };
 

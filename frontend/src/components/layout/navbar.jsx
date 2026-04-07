@@ -1,29 +1,42 @@
+import {House, FolderDot, Info} from 'lucide-react';
+
 const Navbar = () => {
-  return (
-    <nav className="relative flex items-center px-6 py-4">
-
-      {/* Center nav */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex gap-6 border border-slate-600 shadow-md px-6 py-2 rounded-lg bg-[#1d1d1d]">
-        <a href="#" className="text-gray-300 hover:text-white transition">
-          Home
-        </a>
-        <a href="#" className="text-gray-300 hover:text-white transition">
-          Work
-        </a>
-        <a href="#" className="text-gray-300 hover:text-white transition">
-          About
-        </a>
-      </div>
-
-      {/* Right side */}
-      <div className="ml-auto border border-slate-600 shadow-md px-6 py-2 rounded-lg bg-[#1d1d1d]">
-        <a href="#" className="text-gray-300 hover:text-white transition">
-          Contact
-        </a>
-      </div>
-
-    </nav>
-  );
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({behavior: 'smooth'})
+        }
+    }
+    return (
+        <nav className="flex justify-center items-center px-6 mt-3 ">
+            <div className="flex gap-8 border border-slate-700 shadow-xl px-6 py-3 rounded-lg bg-[#1d1d1d]/80 backdrop-blur-md">
+                <button onClick={
+                        () => {
+                            handleScroll('hero-section')
+                        }
+                    }
+                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
+                    <House size={20}/>
+                </button>
+                <button onClick={
+                        () => {
+                            handleScroll('project-section')
+                        }
+                    }
+                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
+                    <FolderDot size={20}/>
+                </button>
+                <button onClick={
+                        () => {
+                            handleScroll('about-me')
+                        }
+                    }
+                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
+                    <Info size={20}/>
+                </button>
+            </div>
+        </nav>
+    );
 };
 
 export default Navbar;

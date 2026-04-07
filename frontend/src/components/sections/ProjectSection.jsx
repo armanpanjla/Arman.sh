@@ -5,7 +5,7 @@ import {Projects} from "../../data/Projects";
 
 const ProjectSection = () => {
     return (
-        <section>
+        <section id="project-section" >
             <div className="flex h-fit  font-bold text-center items-center p-3.5">
                 <h1 className="flex  text-3xl">Selected Projects</h1>
                 <Link to="/projects" className=" border  p-2 rounded border-slate-600  ml-auto   hover:scale-105 ">View Projects</Link>

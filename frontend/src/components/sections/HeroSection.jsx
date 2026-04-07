@@ -2,7 +2,7 @@ import { Download } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="flex flex-col items-center justify-center text-center min-h-[80vh] px-6">
+    <section id='hero-section'  className="flex flex-col items-center justify-center text-center min-h-[80vh] px-6">
 
     
       <p className="text-xs tracking-widest text-gray-400 mb-4">
@@ -12,10 +12,10 @@ const HeroSection = () => {
      
       <h1 className="text-4xl md:text-4xl font-bold leading-tight max-w-3xl">
         Where{" "}
-        <span className="text-red-500">quality time</span>{" "}
+        <span className="text-blue-500">quality time</span>{" "}
         and{" "}
         <br />
-        <span className="text-red-500">web development</span>{" "}
+        <span className="text-blue-500">web development</span>{" "}
         come together.
       </h1>
 
@@ -30,7 +30,7 @@ const HeroSection = () => {
           See my work
         </button>
 
-        <button className="flex items-center gap-2 px-5 py-2 rounded-lg text-red-500 hover:bg-red-500/10 transition">
+        <button className="flex items-center gap-2 px-5 py-2 rounded-lg text-blue-500 hover:bg-blue-500/10 transition">
           <Download size={18} />
           Download CV
         </button>
