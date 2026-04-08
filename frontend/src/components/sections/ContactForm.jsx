@@ -1,144 +1,210 @@
-import {useState} from "react";
-import {Mail, PhoneCall, MapPinned, CircleUser} from "lucide-react";
+import { useState } from "react";
+import { Mail, PhoneCall, MapPinned } from "lucide-react";
 
 const ContactForm = () => {
-    const [formData, setFormData] = useState({name: "", email: "", message: ""});
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    subject: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
-    const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.message
+    ) {
+      setStatus("First Name, Last Name, Email, and Message are required");
+      return;
+    }
 
-        if (!formData.name || !formData.email || !formData.message) {
-            setStatus("All fields are required");
-            return;
-        }
+    setLoading(true);
+    setStatus("");
 
-        setLoading(true);
-        setStatus("");
+    try {
+      const res = await fetch("/api/mail/sendmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          subject: formData.subject,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
-        try {
-            const res = await fetch('/api/mail/sendmail', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            });
+      const data = await res.json();
 
-            const data = await res.json();
+      if (data.success) {
+        setStatus("Message sent successfully");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          subject: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setStatus("Failed to send message");
+      }
+    } catch (error) {
+      setStatus("Server error. Try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-            if (data.success) {
-                setStatus("Message sent successfully");
-                setFormData({name: "", email: "", message: ""});
-            } else {
-                setStatus("Failed to send message");
-            }
-        } catch (error) {
-            setStatus("Server error. Try again later.");
-        } finally {
-            setLoading(false);
-        }
-    };
+  return (
+    <section
+      id="contact-form"
+      className="w-full max-w-7xl mx-auto my-12 lg:my-24 px-4 md:px-8 text-white relative"
+    >
+      <div className="absolute inset-0 -z-10 rounded-3xl overflow-hidden opacity-90 filter blur-[80px]">
+        <div className="w-full h-full bg-linear-to-br from-purple-900 via-purple-950 to-black relative">
+          <div
+            className="absolute inset-0 bg-repeat bg-center opacity-[0.03]"
+            style={{ backgroundImage: "url('/noise.png')" }}
+          />
+        </div>
+      </div>
 
-    return (
-        <section id="contact-form" className="flex flex-col lg:flex-row gap-16 my-20 mx-auto px-4 text-white max-w-6xl">
-            <div className="flex-1">
-                <div className="flex items-center gap-3 font-mono text-sm text-slate-500 mb-4 tracking-wide">
-                    <CircleUser size={16}/>
-                    <p>Contact</p>
-                </div>
+      <div className="flex flex-col lg:flex-row rounded-3xl overflow-hidden bg-black/40 backdrop-blur-xl shadow-2xl relative">
+        <div className="flex-1 p-10 md:p-14 lg:p-18 flex flex-col justify-between">
+          <div className="max-w-md">
+            <span className="border border-white/20 text-white rounded-full px-5 py-2 text-xs md:text-sm w-fit mb-8 tracking-wide bg-black/40">
+              Contact
+            </span>
 
-                <h1 className="text-4xl lg:text-5xl font-mono font-bold tracking-wider mb-6">
-                    Get in touch
-                </h1>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Get In touch <br className="hidden md:block" /> with me!
+            </h1>
 
-                <section className="flex flex-col gap-6 mt-8">
+            <p className="text-zinc-300 mb-12 md:mb-16 leading-relaxed text-base">
+              Have questions or ideas? I would love to hear from you. Reach out
+              anytime and let's connect.
+            </p>
+          </div>
 
-                    <div className="flex items-center gap-4 border border-slate-800 rounded-xl p-4">
-                        <Mail size={18}/>
-                        <div>
-                            <h2 className="text-sm text-slate-400">Email</h2>
-                            <p className="text-slate-200">armanpanjla@gmail.com</p>
-                        </div>
-                    </div>
+          <button className="bg-purple-500 text-white font-semibold px-8 py-3 rounded-full w-fit hover:bg-purple-600 transition text-base">
+            Contact Me
+          </button>
+        </div>
 
-                    <div className="flex items-center gap-4 border border-slate-800 rounded-xl p-4">
-                        <PhoneCall size={18}/>
-                        <div>
-                            <h2 className="text-sm text-slate-400">Call me</h2>
-                            <p className="text-slate-200">+91 70187 54773</p>
-                        </div>
-                    </div>
+        <div className="flex-1 p-10 md:p-14 lg:p-18 bg-black/40">
+          <h2 className="text-2xl md:text-3xl font-semibold text-purple-500 mb-10 md:mb-12">
+            Contact Us
+          </h2>
 
-                    <div className="flex items-center gap-4 border border-slate-800 rounded-xl p-4">
-                        <MapPinned size={18}/>
-                        <div>
-                            <h2 className="text-sm text-slate-400">Location</h2>
-                            <p className="text-slate-200">Amritsar, Punjab</p>
-                        </div>
-                    </div>
-
-                </section>
-            </div>
-            <div className="flex-1">
-                <form onSubmit={handleSubmit}
-                    className="flex flex-col gap-4 border border-slate-800 p-6 rounded-2xl my-7 bg-slate-900/30 backdrop-blur">
-
-                    <input type="text" placeholder="Enter your name"
-                        value={
-                            formData.name
-                        }
-                        onChange={
-                            (e) => setFormData({
-                                ...formData,
-                                name: e.target.value
-                            })
-                        }
-                        className="border border-slate-700 bg-transparent p-3 rounded-xl focus:outline-none focus:border-slate-500 transition"/>
-
-                    <input type="email" placeholder="Enter your email"
-                        value={
-                            formData.email
-                        }
-                        onChange={
-                            (e) => setFormData({
-                                ...formData,
-                                email: e.target.value
-                            })
-                        }
-                        className="border border-slate-700 bg-transparent p-3 rounded-xl focus:outline-none focus:border-slate-500 transition"/>
-
-                    <textarea placeholder="Enter your message" rows="4"
-                        value={
-                            formData.message
-                        }
-                        onChange={
-                            (e) => setFormData({
-                                ...formData,
-                                message: e.target.value
-                            })
-                        }
-                        className="border border-slate-700 bg-transparent p-3 rounded-xl focus:outline-none focus:border-slate-500 transition resize-none"/>
-
-                    <button type="submit"
-                        disabled={loading}
-                        className="mt-2 border border-slate-700 rounded-xl py-3 font-mono tracking-wide hover:bg-slate-800 transition disabled:opacity-50">
-                        {
-                        loading ? "Sending..." : "Submit"
-                    } </button>
-
-                    {
-                    status && (
-                        <p className="text-sm text-slate-400 mt-2">
-                            {status}</p>
-                    )
-                } </form>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-10 md:gap-12"
+          >
+            <div className="flex flex-col md:flex-row gap-8 md:gap-10">
+              <input
+                type="text"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstName: e.target.value })
+                }
+                className="w-full border-b border-zinc-700 bg-transparent text-white focus:border-purple-500 outline-none pb-2 transition placeholder-zinc-500 text-base"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={(e) =>
+                  setFormData({ ...formData, lastName: e.target.value })
+                }
+                className="w-full border-b border-zinc-700 bg-transparent text-white focus:border-purple-500 outline-none pb-2 transition placeholder-zinc-500 text-base"
+              />
             </div>
 
+            <div className="flex flex-col md:flex-row gap-8 md:gap-10">
+              <input
+                type="text"
+                placeholder="Subject"
+                value={formData.subject}
+                onChange={(e) => 
+                  setFormData({ ...formData, subject: e.target.value })
+                }
+                className="w-full border-b border-zinc-700 bg-transparent text-white focus:border-purple-500 outline-none pb-2 transition placeholder-zinc-500 text-base"
+              />
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full border-b border-zinc-700 bg-transparent text-white focus:border-purple-500 outline-none pb-2 transition placeholder-zinc-500 text-base"
+              />
+            </div>
+
+            <textarea
+              placeholder="Message"
+              rows="3"
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              className="w-full border-b border-zinc-700 bg-transparent text-white focus:border-purple-500 outline-none pb-2 transition resize-none placeholder-zinc-500 text-base"
+            />
+
+            <div className="flex justify-start lg:justify-end mt-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-purple-500 text-white font-semibold px-8 py-3 rounded-full w-fit lg:w-fit hover:bg-purple-600 transition disabled:opacity-50 text-base"
+              >
+                {loading ? "Sending..." : "Submit"}
+              </button>
+            </div>
+
+            {status && <p className="text-sm text-purple-500 mt-2">{status}</p>}
+          </form>
+        </div>
+      </div>
+
+      <div className="w-full max-w-5xl mx-auto my-16 p-4">
+        <section className="flex flex-col md:flex-row gap-8 mt-8 border-t border-zinc-800 pt-10">
+          <div className="flex-1 flex items-center gap-4 border border-zinc-800/40 rounded-xl p-6 bg-black/20 backdrop-blur-sm">
+            <Mail className="w-6 h-6 text-purple-400" />
+            <div>
+              <h2 className="text-sm text-zinc-400">Email</h2>
+              <p className="text-zinc-200 text-base">armanpanjla@gmail.com</p>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center gap-4 border border-zinc-800/40 rounded-xl p-6 bg-black/20 backdrop-blur-sm">
+            <PhoneCall className="w-6 h-6 text-purple-400" />
+            <div>
+              <h2 className="text-sm text-zinc-400">Call me</h2>
+              <p className="text-zinc-200 text-base">+91 70187 54773</p>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center gap-4 border border-zinc-800/40 rounded-xl p-6 bg-black/20 backdrop-blur-sm">
+            <MapPinned className="w-6 h-6 text-purple-400" />
+            <div>
+              <h2 className="text-sm text-zinc-400">Location</h2>
+              <p className="text-zinc-200 text-base">Amritsar, Punjab</p>
+            </div>
+          </div>
         </section>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default ContactForm;

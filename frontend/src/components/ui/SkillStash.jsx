@@ -1,7 +1,7 @@
 const SkillStash = ({ Skills }) => {
     return (
         <section>
-            <div className="grid grid-cols-1 lg:grid-cols-4  gap-8 sm:grid-cols-3  sm:gap-6 ">
+            <div className="grid grid-cols-1  lg:grid-cols-4 lg:w-3xl  gap-8 sm:grid-cols-3  sm:gap-6 ">
                 {Skills.map((skill, index) => (
                     <div
                         key={index}

@@ -2,7 +2,11 @@ import 'dotenv/config';
 import nodemailer from 'nodemailer';
 
 const mailer = async (req, res) => {
-    const { name, email, message } = req.body;
+    const { firstName, lastName, subject, email, message } = req.body;
+
+    if (!firstName || !lastName || !email || !message) {
+        return res.status(400).json({ success: false, message: "Missing required fields" });
+    }
 
     try {
         const transporter = nodemailer.createTransport({
@@ -12,13 +16,19 @@ const mailer = async (req, res) => {
                 pass: process.env.Owner_Password,
             },
         });
-
         await transporter.sendMail({
             from: `"Portfolio Website" <${process.env.Owner_Email}>`,
             to: process.env.Owner_Email,
             replyTo: email,
-            subject: `Contact from ${name}`,
-            text: message,
+            subject: `Portfolio Contact from ${firstName} ${lastName}`,
+            text: `
+            
+Name: ${firstName} ${lastName}
+Email: ${email}
+Subject : ${subject || 'Not provided'}
+---MESSAGE---
+${message}
+            `,
         });
 
         res.status(200).json({
@@ -29,7 +39,7 @@ const mailer = async (req, res) => {
         console.error("MAIL ERROR:", error);
         res.status(500).json({
             success: false,
-            message: error.message,
+            message: "Failed to send email. Please try again.",
         });
     }
 };

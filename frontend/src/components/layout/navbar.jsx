@@ -1,42 +1,40 @@
-import {House, FolderDot, Info} from 'lucide-react';
-
+import { scrollHelper } from "../../utils/scrollHelpers";
 const Navbar = () => {
-    const handleScroll = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({behavior: 'smooth'})
-        }
-    }
-    return (
-        <nav className="flex justify-center items-center px-6 mt-3 ">
-            <div className="flex gap-8 border border-slate-700 shadow-xl px-6 py-3 rounded-lg bg-[#1d1d1d]/80 backdrop-blur-md">
-                <button onClick={
-                        () => {
-                            handleScroll('hero-section')
-                        }
-                    }
-                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
-                    <House size={20}/>
-                </button>
-                <button onClick={
-                        () => {
-                            handleScroll('project-section')
-                        }
-                    }
-                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
-                    <FolderDot size={20}/>
-                </button>
-                <button onClick={
-                        () => {
-                            handleScroll('about-me')
-                        }
-                    }
-                    className="text-gray-400 hover:text-white transition-all hover:scale-110">
-                    <Info size={20}/>
-                </button>
-            </div>
-        </nav>
-    );
+  return (
+    <div className="w-full flex justify-between text-white items-center px-4 py-3 md:px-8 md:py-4 overflow-x-hidden">
+      <div>
+        <a
+          href="/"
+          className="font-mono text-base md:text-xl font-bold hover:text-[#8b75ff] transition-colors"
+        >
+          ~/
+        </a>
+      </div>
+      <div className="font-mono flex gap-3 md:gap-6 text-xs sm:text-sm md:text-base">
+        <button
+          className="hover:text-[#8b75ff] transition-colors"
+          onClick={() => scrollHelper("about-me")}
+        >
+          About
+        </button>
+        <button
+          className="hover:text-[#8b75ff] transition-colors"
+          onClick={() => scrollHelper("project-section")}
+        >
+          Projects
+        </button>
+        <a href="/resumeArman.pdf" target="_blank" rel="noreferrer">
+          View Resume
+        </a>
+        <button
+          className="hover:text-[#8b75ff] transition-colors"
+          onClick={() => scrollHelper("contact-form")}
+        >
+          Contact
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

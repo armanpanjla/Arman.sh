@@ -11,7 +11,6 @@ const TechStack = () => {
 
                 <SkillStash Skills={skills}
                     title="MySkills"/>
-
             </div>
         </section>
     )
